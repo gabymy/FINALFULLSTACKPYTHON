@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #f8b400;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 1em;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 1em;
+}
+
+section {
+    margin: 2em 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 0.5em 0 0.2em;
+}
+
+form input, form button {
+    padding: 0.5em;
+    margin: 0.5em 0;
+}
+
+form button {
+    background-color: #f8b400;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e0a300;
+}
+
+#turnos-lista, #mascotas-lista {
+    list-style-type: none;
+    padding: 0;
+}
+
+#turnos-lista li, #mascotas-lista li {
+    margin: 0.5em 0;
+}
+
+#turnos-lista button, #mascotas-lista button {
+    margin-left: 1em;
+}
+
+@media (max-width: 768px) {
+    header nav ul li {
+        display: block;
+        margin: 1em 0;
+    }
+
+    form input, form button {
+        width: 100%;
+    }
+}

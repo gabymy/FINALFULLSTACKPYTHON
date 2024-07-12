@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atención a las Mascotas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenidos a PetCare</h1>
+        <nav>
+            <ul>
+                <li><a href="#servicios"><i class="fas fa-paw"></i> Servicios</a></li>
+                <li><a href="#accesorios"><i class="fas fa-bone"></i> Accesorios</a></li>
+                <li><a href="#turnos"><i class="fas fa-calendar-alt"></i> Turnos</a></li>
+                <li><a href="#registro"><i class="fas fa-envelope"></i> Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="servicios">
+            <h2>Servicios de Atención a Mascotas</h2>
+            <p>Ofrecemos una variedad de servicios para el bienestar de tus mascotas.</p>
+        </section>
+
+        <section id="accesorios">
+            <h2>Compra de Accesorios</h2>
+            <div class="accesorios-lista" aria-live="polite">
+                <!-- Los productos se cargarán aquí dinámicamente -->
+            </div>
+        </section>
+
+        <section id="turnos">
+            <h2>Turnos de Peluquería Canina</h2>
+            <form id="turnos-form">
+                <label for="nombre_dueño">Nombre del dueño:</label>
+                <input type="text" id="nombre_dueño" name="nombre_dueño" required aria-required="true">
+
+                <label for="nombre_mascota">Nombre de la mascota:</label>
+                <input type="text" id="nombre_mascota" name="nombre_mascota" required aria-required="true">
+
+                <label for="fecha_turno">Fecha del turno:</label>
+                <input type="date" id="fecha_turno" name="fecha_turno" required aria-required="true">
+
+                <button type="submit"><i class="fas fa-check"></i> Reservar Turno</button>
+            </form>
+
+            <h3>Lista de Turnos</h3>
+            <ul id="turnos-lista">
+                <!-- Los turnos se cargarán aquí dinámicamente -->
+            </ul>
+        </section>
+
+        <section id="registro">
+            <h2>Registro para recibir información y ofertas</h2>
+            <form id="registro-form">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required aria-required="true">
+
+                <button type="submit"><i class="fas fa-paper-plane"></i> Registrarse</button>
+            </form>
+        </section>
+
+        <section id="mascotas">
+            <h2>Lista de Mascotas</h2>
+            <ul id="mascotas-lista">
+                <!-- La lista de mascotas se carga aquí dinámicamente desde la API -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PetCare. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Manejo del formulario de turnos
+        document.getElementById('turnos-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de manera tradicional
+
+            const formData = {
+                nombre_dueño: document.getElementById('nombre_dueño').value,
+                nombre_mascota: document.getElementById('nombre_mascota').value,
+                fecha_turno: document.getElementById('fecha_turno').value
+            };
+
+            fetch('/turno', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Aquí puedes agregar código para actualizar la UI con la respuesta del servidor
+                alert(data.message); // Muestra un mensaje con la respuesta del servidor
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+        // Manejo del formulario de registro
+        document.getElementById('registro-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de manera tradicional
+
+            const formData = {
+                email: document.getElementById('email').value
+            };
+
+            fetch('/registro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                alert(data.message); // Muestra un mensaje con la respuesta del servidor
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
