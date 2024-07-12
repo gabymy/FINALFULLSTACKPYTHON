@@ -1,8 +1,8 @@
-**__MASCOTAS_**
+**_MASCOTAS_**
 
 MASCOTAS es una aplicación web para la atención a mascotas, compra de accesorios y reserva de turnos para peluquería canina. La aplicación está construida con HTML, CSS, JavaScript para el frontend, y Python con Flask y MySQL para el backend.
 
-**__Características_**
+**_Características_**
 
 Registro de usuarios para recibir información y ofertas.
 Reserva de turnos para peluquería canina.
@@ -10,23 +10,23 @@ CRUD completo para gestionar turnos.
 Diseño responsivo y accesible.
 Interacción dinámica con el usuario utilizando JavaScript.
 
-**__Requisitos_**
-Python 3.7 o superior
-MySQL
+**_Requisitos_**:
 
+*Python 3.7 o superior
+*MySQL
 
-__Crear y activar un entorno virtual_
+_Crear y activar un entorno virtual_
 ```
 python -m venv venv
 source venv/bin/activate  # En Windows: venv\Scripts\activate
 ```
 
-__Instalar las dependencias_
+_Instalar las dependencias_
 ```
 pip install -r requirements.txt
 ```
 
-__Configurar la base de datos MySQL_
+_Configurar la base de datos MySQL_
 ```
 CREATE DATABASE pet_care_db;
 
@@ -45,7 +45,7 @@ CREATE TABLE usuarios (
 );
 ```
 
-__Configurar las variables de entorno_
+_Configurar las variables de entorno_
 ```
 MYSQL_HOST=localhost
 MYSQL_USER=tu_usuario
@@ -53,7 +53,7 @@ MYSQL_PASSWORD=tu_contraseña
 MYSQL_DB=pet_care_db
 ```
 
-__Ejecutar la aplicación_
+_Ejecutar la aplicación_
 ```
 export FLASK_APP=app.py
 export FLASK_ENV=development
